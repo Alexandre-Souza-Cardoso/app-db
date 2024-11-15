@@ -25,6 +25,14 @@ export default function Page() {
         setUsuario(null)
     }
 
+    async function excluir() {
+        if (!usuario || !usuario.id) return
+        await Backend.usuarios.excluir(usuario.id)
+        const usuarios = await Backend.usuarios.obter()
+        setUsuarios(usuarios)
+        setUsuario(null)
+    }
+
     return (
         <Pagina className="flex flex-col gap-10">
             <Titulo icone={IconUser} principal="Usuários" segundario="Cadastro de usuários" />
@@ -35,6 +43,7 @@ export default function Page() {
                     onChange={setUsuario}
                     salvar={salvar}
                     cancelar={() => setUsuario(null)}
+                    excluir={excluir}
                 />
             ) : (
                 <>
