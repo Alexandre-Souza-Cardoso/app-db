@@ -46,5 +46,4 @@ export default function FormularioUsuario(props: FormularioUsuarioProps) {
 
         </div>
     )
-
 }
